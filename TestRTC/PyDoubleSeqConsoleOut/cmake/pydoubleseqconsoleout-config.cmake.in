@@ -1,0 +1,54 @@
+# PyDoubleSeqConsoleOut CMake config file
+#
+# This file sets the following variables:
+# PyDoubleSeqConsoleOut_FOUND - Always TRUE.
+# PyDoubleSeqConsoleOut_INCLUDE_DIRS - Directories containing the PyDoubleSeqConsoleOut include files.
+# PyDoubleSeqConsoleOut_IDL_DIRS - Directories containing the PyDoubleSeqConsoleOut IDL files.
+# PyDoubleSeqConsoleOut_LIBRARIES - Libraries needed to use PyDoubleSeqConsoleOut.
+# PyDoubleSeqConsoleOut_DEFINITIONS - Compiler flags for PyDoubleSeqConsoleOut.
+# PyDoubleSeqConsoleOut_VERSION - The version of PyDoubleSeqConsoleOut found.
+# PyDoubleSeqConsoleOut_VERSION_MAJOR - The major version of PyDoubleSeqConsoleOut found.
+# PyDoubleSeqConsoleOut_VERSION_MINOR - The minor version of PyDoubleSeqConsoleOut found.
+# PyDoubleSeqConsoleOut_VERSION_REVISION - The revision version of PyDoubleSeqConsoleOut found.
+# PyDoubleSeqConsoleOut_VERSION_CANDIDATE - The candidate version of PyDoubleSeqConsoleOut found.
+
+message(STATUS "Found PyDoubleSeqConsoleOut-@PROJECT_VERSION@")
+set(PyDoubleSeqConsoleOut_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(PyDoubleSeqConsoleOut_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(PyDoubleSeqConsoleOut_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(PyDoubleSeqConsoleOut_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(PyDoubleSeqConsoleOut_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(PyDoubleSeqConsoleOut_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(PyDoubleSeqConsoleOut_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(PyDoubleSeqConsoleOut_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(PyDoubleSeqConsoleOut_VERSION @PROJECT_VERSION@)
+set(PyDoubleSeqConsoleOut_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(PyDoubleSeqConsoleOut_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(PyDoubleSeqConsoleOut_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(PyDoubleSeqConsoleOut_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+
